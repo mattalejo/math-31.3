@@ -1,6 +1,7 @@
 ---
 title: "Mathematical Analysis II"
 output:
+  
   rmdformats::downcute:
     downcute_theme: chaos
     number_sections: yes
@@ -8,7 +9,7 @@ output:
     toc_collapsed: no
     toc_depth: 3
     df_print: paged
-  rmdformats::lockdown: default
+  pdf_document: default
 ---
 
 ***
@@ -90,7 +91,7 @@ is $\infty - \infty$ indeterminate form. Just like before, we need to convert th
 Evaluate $\displaystyle\lim_{x\to1^+} \left( \frac{1}{ln x} - \frac{1}{x-1}\right)$
 </summary>
 
-Solution: Note that we have the indeterminate form $\infty - \infty$. Here, we can write the different as a quotient.
+*Solution.* Note that we have the indeterminate form $\infty - \infty$. Here, we can write the different as a quotient.
 
 $$\lim_{x\to 1^+} \left( \frac{1}{ln x} - \frac{1}{x-1} \right) = \lim_{x\to1^+}  \frac{x-1-\ln x}{(x-1)\ln x}$$
 
@@ -153,7 +154,7 @@ Like Type 1 improper integrals, a Type 2 improper integral is convergent if it e
 <details>
 <summary> Recall $\displaystyle \int_{-1}^1 \frac{1}{x^2}dx$</summary>
 
-Solution. Note that \frac{1}{x^2} is discontinuous at x = 0.
+*Solution.* Note that $\frac{1}{x^2}$ is discontinuous at $x = 0$.
 
 \begin{align*}
 \int_{-1}^1 \frac{1}{x^2}dx &= \int_{-1}^0 \frac{1}{x^2} + \int_0^1 \frac{1}{x^2}\\
