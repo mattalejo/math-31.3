@@ -1,0 +1,178 @@
+---
+title: "Mathematical Analysis II"
+output:
+  rmdformats::downcute:
+    downcute_theme: chaos
+    number_sections: yes
+    toc_float: yes
+    toc_collapsed: no
+    toc_depth: 3
+    df_print: paged
+  rmdformats::lockdown: default
+---
+
+***
+
+# Indeterminate forms and l'Hospital's rule
+
+Recall: 
+
+$$ \lim_{ x\to a} \dfrac{f(x)}{g(x)} = \dfrac{\lim_{x\to a} f(x)}{\lim_{x\to a} g(x)} $$
+
+If both $\lim_{ x\to a} f(x)$ and $\lim_{ x\to a} g(x)$ exist, and $\lim_{ x\to a} g(x) \neq 0$, then $\lim_{ x\to a} \frac{f(x)}{g(x)}$ exists. It also holds if $x\to a$ is changed to $x \to a^+$ or $x \to \pm\infty$.
+
+If $\lim_{ x\to a} g(x) = 0$ but $\lim_{ x\to a} f(x) \neq 0$, then $\lim_{ x\to a} \frac{f(x)}{g(x)}$ DNE.
+
+If in $\lim_{ x\to a} \frac{f(x)}{g(x)}$, $\lim_{ x\to a} f(x) = 0$, $\lim_{ x\to a} g(x) = 0$, then the limit may or may not exist, and we have what is called an indeterminate form of type $\frac{0}{0}$.
+
+Similarly, if in $\lim_{ x\to a} \frac{f(x)}{g(x)}$, $\lim_{ x\to a} f(x) = \pm\infty$, $\lim_{ x\to a} g(x) = \pm\infty$, then the limit may or may not exists, and we have what is called an indeterminate form of type $\frac{\infty}{\infty}$.
+
+***
+
+## L'Hospital's rule (LR)
+
+>Suppose $f$ and $g$ are diffrentiable and $g'(x) \neq 0$ on an open interval  that contains $a$ (except possibly at $a$),
+>
+>Then $\lim_{ x\to a} \frac{f(x)}{g(x)} = \lim_{ x\to a} \frac{f'(x)}{g'x)}$
+>
+>>*Note:* L'Hospital's rule is also valid if $x\to a$ is changed to $x \to a^+$, $x\to a^-$ , or $x\to\pm\infty$
+
+
+
+<details>
+<summary>
+Evaluate $\displaystyle\lim_{x\to 1}\frac{\ln x}{x-1}$
+</summary>
+
+*Solution.* This has indeterminated form $\frac{0}{0}$, so we can apply *LR*:
+
+$$ \lim_{x\to 1} \frac{\ln x}{x-1} = \lim_{x\to 1}\frac{1/x}{1} = 1 $$
+</details>
+***
+
+### Indeterminate products
+
+This kind of limit is also $0 \cdot \pm\infty$ indeterminate form, which happens if $\lim_{x\to a} f(x) = 0$, $\lim_{x\to a} g(x) = \pm\infty$. To solve, we must try to converty this to an indeterminate of either the form $\frac{0}{0}$ or $\frac{\infty}{\infty}$ before applying LR.
+ 
+
+<details>
+<summary>
+Evaluate $\displaystyle \lim_{x\to-\infty}(xe^x)$.
+</summary>
+
+*Solution.* Note that the limit has the indeterminate form $0 \cdot -\infty$. We can write $xe^x$ as a quotient
+
+$$ \lim_{x\to-\infty}(xe^x) = \lim_{x\to-\infty}\frac{x}{e^{-x}} $$
+
+RHS is now a $\frac{-\infty}{\infty}$ indeterminate form. Hence we can apply *LR*.
+
+\begin{align*}
+\lim_{x\to-\infty}(xe^x) &= \lim_{x\to-\infty}\frac{x}{e^{-x}} \\
+&= \lim_{x\to-\infty}\frac{1}{-e^{-x}} \\
+&= 0
+\end{align*}
+
+</details>
+
+***
+
+### Indeterminate differences
+
+If $\lim_{x\to a} f(x) = \infty$ and $\lim_{x\to a} g(x) = \infty$, then the limit
+
+$$ \lim_{x\to a} [f(x)-g(x)] $$
+
+is $\infty - \infty$ indeterminate form. Just like before, we need to convert this to an indeterminate limit of the form $\frac{0}{0}$ or $\frac{\infty}{\infty}$ before applying LR.
+
+
+<details>
+<summary>
+Evaluate $\displaystyle\lim_{x\to1^+} \left( \frac{1}{ln x} - \frac{1}{x-1}\right)$
+</summary>
+
+Solution: Note that we have the indeterminate form $\infty - \infty$. Here, we can write the different as a quotient.
+
+$$\lim_{x\to 1^+} \left( \frac{1}{ln x} - \frac{1}{x-1} \right) = \lim_{x\to1^+}  \frac{x-1-\ln x}{(x-1)\ln x}$$
+
+Now, the new limit has indeterminate form $\frac{0}{0}$, so *LR* applies
+
+\begin{align*}
+\lim_{x\to1^+} \left( \frac{x-1-\ln x}{(x-1)\ln x}\right) &= \lim_{x\to1^+}  \frac{1-1/x}{(x-1)(1/x)+ \ln x} \\
+&= \lim_{x\to1^+} \frac{x-1}{x-1+x\ln x}\\
+&= \lim_{x\to 1^+} \frac{1}{1+x(1/x)+\ln x}\\
+&= \lim_{x\to 1^+} \frac{1}{1+1+\ln x}\\
+&= \frac{1}{1+1+\ln 1}\\
+&= \frac{1}{2}
+\end{align*}
+</details>
+
+***
+
+### Indeterminate powers
+
+
+
+***
+
+# Improper integrals
+
+The integral $\int_{-1}^1 (1/x^2)dx$ looks like an ordinary integral that you encountered. But using FTC2,
+
+$$ \int_{-1}^1 \frac{1}{x^2}dx = -\frac{1}{x}{\huge|}_{-1}^1 = -1-1= -2 $$ 
+
+However, the computation is not valid because the integral is not continuous on $[-1,1]$.
+
+***
+
+## Infinite intervals
+
+>1. If $\int_a^t f(x)dx$ exists for all $t\geq a$, then $$ \int_a^{\infty} f(x)dx = \lim_{t \to \infty} \int_a^t f(x)dx $$ if this limit exists.
+>
+>2. If $\int_t^b f(x)dx$ exists for all $t \leq a$, then $$ \int_{-\infty}^b f(x)dx = \lim_{t\to -\infty} \int_t^b f(x)dx $$ if this limit exists.
+>
+>3. If both $\int_a^{\infty} f(x) dx$ and $\int_{-\infty}^a f(x) dx$ exist (as finite numbers), then $$ \int_{-\infty}^{\infty} f(x) dx = \int_{-\infty}^a f(x)dx + \int_a^{\infty} f(x)dx $$
+>
+>>If either $\int_a^{\infty} f(x) dx$ or $\int_{-\infty}^a f(x) dx$ DNE, then $\int_{-\infty}^{\infty} f(x) dx$ DNE.
+
+If an improper integral exists (as a finite number), then we say that it is convergent; otherwise, it is divergent.
+
+***
+
+## Discontinuous integrands
+
+>1. If $f$ is continuous on $[a,b)$ but discontinuous at $b$, then $$ \int_a^b f(x)dx = \lim_{t\to b^-} \int_a^t f(x) dx $$ if this limit exists (as a finite number)
+>
+>2. If $f$ is continuous on $(a,b]$ but discontinuous at $a$, then $$ \int_a^b f(x)dx = \lim_{t\to a^+} \int_t^b f(x) dx $$ if this limit exists.
+>
+>3. If $f$ is discontinuous at $c \in (a,b)$, but both $\int_a^c f(x)dx$ and $\int_c^b f(x)dx$ exists, then $$ \int_a^b f(x)dx = \int_a^c f(x)dx + \int_c^b f(x)dx $$
+>
+>>If either $\int_a^c f(x)dx$ or $\int_c^b f(x)dx$ DNE, then $\int_a^b f(x)dx$ DNE.
+
+Like Type 1 improper integrals, a Type 2 improper integral is convergent if it exists, and divergent if it does not.
+
+<details>
+<summary> Recall $\displaystyle \int_{-1}^1 \frac{1}{x^2}dx$</summary>
+
+Solution. Note that \frac{1}{x^2} is discontinuous at x = 0.
+
+\begin{align*}
+\int_{-1}^1 \frac{1}{x^2}dx &= \int_{-1}^0 \frac{1}{x^2} + \int_0^1 \frac{1}{x^2}\\
+&= \lim_{t\to 0^-} \int_{-1}^t \frac{1}{x^2} + \lim_{t\to 0^+} \int_t^1 \frac{1}{x^2}\\
+\end{align*}
+
+We observe that both integrals are divergent becayse they both approach infinity.
+
+$$\lim_{t\to 0^-} \int_{-1}^t \frac{1}{x^2} + \lim_{t\to 0^+} \int_t^1 \frac{1}{x^2} = \infty + \infty = \infty $$
+
+</details>
+
+***
+
+## Comparison theorem
+
+>Suppose that $f$ and $g$ are continuous function with $f(x) \geq g(x) \geq 0 for x \geq a$.
+>
+>1. If $\int_a^{\infty} f(x) dx$ is convergent, then $\int_a^{\infty} g(x) dx$ is also convergent.
+>
+>2. If $\int_a^{\infty} f(x) dx$ is divergent, then $\int_a^{\infty} g(x) dx$ is also divergent.
+
